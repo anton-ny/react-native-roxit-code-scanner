@@ -1,7 +1,7 @@
 package com.roxitcodescanner;
 
 import androidx.annotation.NonNull;
-
+import android.content.IntentFilter;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -14,6 +14,10 @@ public class RoxitCodeScannerModule extends ReactContextBaseJavaModule {
 
   public RoxitCodeScannerModule(ReactApplicationContext reactContext) {
     super(reactContext);
+    this.reactContext = reactContext;
+    reactContext.registerReceiver(new ScannerReceiver(), new IntentFilter("com.xcheng.scanner.action.BARCODE_DECODING_BROADCAST"));
+    reactContext.registerReceiver(new ScannerReceiver(), new IntentFilter("android.intent.ACTION_DECODE_DATA"));
+    reactContext.registerReceiver(new ScannerReceiver(), new IntentFilter("scode"));
   }
 
   @Override
