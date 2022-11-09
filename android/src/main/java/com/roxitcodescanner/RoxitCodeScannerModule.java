@@ -1,16 +1,15 @@
 package com.roxitcodescanner;
 
-import androidx.annotation.NonNull;
+import android.util.Log;
 import android.content.IntentFilter;
+
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.module.annotations.ReactModule;
 
-@ReactModule(name = RoxitCodeScannerModule.NAME)
 public class RoxitCodeScannerModule extends ReactContextBaseJavaModule {
-  public static final String NAME = "RoxitCodeScanner";
+  public static ReactApplicationContext reactContext;
 
   public RoxitCodeScannerModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -20,17 +19,8 @@ public class RoxitCodeScannerModule extends ReactContextBaseJavaModule {
     reactContext.registerReceiver(new ScannerReceiver(), new IntentFilter("scode"));
   }
 
-  @Override
-  @NonNull
-  public String getName() {
-    return NAME;
-  }
-
-
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
-  @ReactMethod
-  public void multiply(double a, double b, Promise promise) {
-    promise.resolve(a * b);
-  }
+    @Override
+    public String getName() {
+        return "ScannerBroadcast";
+    }
 }
