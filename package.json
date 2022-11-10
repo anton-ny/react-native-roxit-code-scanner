@@ -1,12 +1,14 @@
 {
   "name": "react-native-roxit-code-scanner",
-  "version": "0.1.3",
-  "description": "test",
+  "version": "1.0.2",
+  "description": "Broadcast code scanner receiver",
   "main": "index.js",
   "scripts": {
     "test": "jest"
   },
   "keywords": [
+    "barcode",
+    "scanner",
     "react-native",
     "android"
   ],
@@ -22,17 +24,6 @@
   "homepage": "https://github.com/rox-it/react-native-roxit-code-scanner#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  },
-  "resolutions": {
-    "@types/react": "17.0.21"
-  },
-  "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
-  },
-  "directories": {
-    "example": "example",
-    "lib": "lib"
   },
   "devDependencies": {}
 }

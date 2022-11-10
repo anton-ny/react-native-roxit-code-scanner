@@ -1,32 +1,33 @@
 # react-native-roxit-code-scanner
 
-Broadcast code scanner receiver
+Broadcast code scanner receiver for intent actions:
+
+- com.xcheng.scanner.action.BARCODE_DECODING_BROADCAST
+- android.intent.ACTION_DECODE_DATA
+- barcode
 
 ## Installation
 
 ```sh
 npm install react-native-roxit-code-scanner
+yarn add react-native-roxit-code-scanner
 ```
 
 ## Usage
 
 ```js
-import * as ScodeScanner from 'react-native-roxit-code-scanner';
+import 'react-native-roxit-code-scanner';
 import {DeviceEventEmitter} from "react-native";
 
 // ...
 
-const scode_callback = useCallback(scode => {
-	console.log('scode', scode);
+const barcode_callback = useCallback(barcode => {
+	console.log('barcode', barcode);
 }, []);
 
-useEffect(
-  () => {
-    setTimeout(() => {
-      DeviceEventEmitter.addListener('scode', scode_callback);
-      return () => DeviceEventEmitter.removeAllListeners('scode');
-    }, 100);
-  }
-);
+useEffect(() => {
+	DeviceEventEmitter.addListener('barcode', barcode_callback);
+	return () => DeviceEventEmitter.removeAllListeners('barcode');
+});
 ```
 

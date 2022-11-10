@@ -26,32 +26,32 @@ public class ScannerReceiver extends BroadcastReceiver {
 //            Bundle bundle = new Bundle();
                 ReactApplication rnApp = (ReactApplication) context.getApplicationContext();
             if (intent.getAction().equals("com.xcheng.scanner.action.BARCODE_DECODING_BROADCAST")) {
-//                bundle.putString("scode", intent.getStringExtra(Intent.EXTRA_TEXT));
+//                bundle.putString("barcode", intent.getStringExtra(Intent.EXTRA_TEXT));
 //                Toast.makeText(context, intent.getStringExtra("EXTRA_BARCODE_DECODING_DATA"), 2000).show();
                 rnApp.getReactNativeHost().getReactInstanceManager()
                     .getCurrentReactContext()
                     .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                    .emit("scode", intent.getStringExtra("EXTRA_BARCODE_DECODING_DATA"));
+                    .emit("barcode", intent.getStringExtra("EXTRA_BARCODE_DECODING_DATA"));
             }
             if (intent.getAction().equals("android.intent.ACTION_DECODE_DATA")) {
                 rnApp.getReactNativeHost().getReactInstanceManager()
                     .getCurrentReactContext()
                     .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                    .emit("scode", intent.getStringExtra("barcode_string"));
+                    .emit("barcode", intent.getStringExtra("barcode_string"));
             }
-            if (intent.getAction().equals("scode")) {
+            if (intent.getAction().equals("barcode")) {
                 rnApp.getReactNativeHost().getReactInstanceManager()
                     .getCurrentReactContext()
                     .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                    .emit("scode", intent.getStringExtra("scode"));
+                    .emit("barcode", intent.getStringExtra("barcode"));
             }
         }
     }
 
-//    public void sendCallEvent(String scode){
+//    public void sendCallEvent(String barcode){
 //            WritableMap params = Arguments.createMap();
-//            params.putString("scode", scode);
-//            sendEvent("ScodeRecevied", params);
+//            params.putString("barcode", barcode);
+//            sendEvent("BarcodeRecevied", params);
 //    }
 //
 //    private void sendEvent(String eventName, @Nullable WritableMap params) {
